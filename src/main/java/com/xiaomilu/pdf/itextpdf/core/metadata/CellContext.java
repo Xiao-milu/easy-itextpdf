@@ -12,4 +12,8 @@ public class CellContext extends AbstractCell{
         super(header, sort, autoCut, cellSize, cellStyle, headerCellStyle, headerFontStyle, context);
         this.contextFontStyle = contextFontStyle;
     }
+
+    public StyleFont getContextFontStyle() {
+        return contextFontStyle;
+    }
 }

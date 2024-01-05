@@ -1,7 +1,6 @@
 package com.xiaomilu.pdf.itextpdf.core.resolver;
 
 import com.xiaomilu.pdf.itextpdf.core.metadata.Cell;
-import com.xiaomilu.pdf.itextpdf.core.metadata.Cells;
 import com.xiaomilu.pdf.itextpdf.utils.CellUtils;
 
 import java.util.List;
@@ -14,10 +13,7 @@ public class DefaultHeaderCellResolver implements HeaderCellResolver {
 
     @Override
     public List<Cell> resolve(List<Cell> sources) {
-        Cells cells = CellUtils.getCells(sources);
-        int tableColSize = cells.getTableColSize();
-        Integer dataColSize = cells.getDataColSize();
-        if (tableColSize == dataColSize) {
+        if (CellUtils.isSingleLineTable(sources)) {
             return resolveSingleLine(sources);
         }
         return resolveMultiLine(sources);

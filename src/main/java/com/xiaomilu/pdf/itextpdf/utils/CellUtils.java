@@ -1,9 +1,6 @@
 package com.xiaomilu.pdf.itextpdf.utils;
 
-import com.xiaomilu.pdf.itextpdf.core.metadata.AbstractCell;
-import com.xiaomilu.pdf.itextpdf.core.metadata.Cell;
-import com.xiaomilu.pdf.itextpdf.core.metadata.CellContext;
-import com.xiaomilu.pdf.itextpdf.core.metadata.Cells;
+import com.xiaomilu.pdf.itextpdf.core.metadata.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +50,31 @@ public abstract class CellUtils {
             headerCellList.add(headerCell);
         }
         return headerCellList;
+    }
+
+    /**
+     * 获取全局table配置
+     */
+    public static GlobalTableProperties getGlobalProperties(List<Cell> source) {
+        return getCells(source).getProperties();
+    }
+
+    /**
+     * 判断单条数据是否跨越多行
+     * @return true则表示单条数据没有跨越多行
+     */
+    public static boolean isSingleLineTable(List<Cell> sources) {
+        Cells cells = CellUtils.getCells(sources);
+        return cells.getTableColSize() == cells.getDataColSize();
+    }
+
+    /**
+     * 获取cell描述信息，方便进行调试
+     */
+    public static String getDescription(Cell cell) {
+        return String.format("单元格内容:%s / colspan:%s / rowspan:%s",
+                cell.getContext().toString(),
+                cell.getColspan(),
+                cell.getRowspan());
     }
 }

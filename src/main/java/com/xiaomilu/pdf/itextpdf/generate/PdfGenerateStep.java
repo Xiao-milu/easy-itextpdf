@@ -9,7 +9,7 @@ public class PdfGenerateStep {
     public static PdfGenerateStep startStep() {
         return new PdfGenerateStep();
     }
-    public Step1 setTitle(String title, StyleCell titleCellStyle, StyleFont titleFont, boolean showBorder) {
+    public Step1 setTitle(String title, StyleCell titleCellStyle, StyleFont titleFont, float showBorder) {
         return new Step1();
     }
 
@@ -22,7 +22,7 @@ public class PdfGenerateStep {
         }
 
 
-        public Step2 setSubTitle(String subTitle, StyleCell subTitleCellStyle, StyleFont subTitleFont, boolean showBorder) {
+        public Step2 setSubTitle(String subTitle, StyleCell subTitleCellStyle, StyleFont subTitleFont, float showBorder) {
             return new Step2();
         }
 

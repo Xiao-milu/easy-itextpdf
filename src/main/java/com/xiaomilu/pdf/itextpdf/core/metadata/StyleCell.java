@@ -22,11 +22,10 @@ public class StyleCell {
      * 内间距
      */
     private float padding;
-
     /**
      * 行高
      */
-    float height;
+    private float height;
 
     public StyleCell(AlignEnums alignEnums, int colspan, int rowspan, float padding, float height) {
         this.alignEnums = alignEnums;
@@ -34,5 +33,17 @@ public class StyleCell {
         this.rowspan = rowspan;
         this.padding = padding;
         this.height = height;
+    }
+
+    public int getColspan() {
+        return colspan;
+    }
+
+    public int getRowspan() {
+        return rowspan;
+    }
+
+    public void setColspan(int colspan) {
+        this.colspan = colspan;
     }
 }

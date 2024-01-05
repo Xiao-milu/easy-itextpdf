@@ -35,7 +35,31 @@ public class Cell {
         return head;
     }
 
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    public void setFirst(boolean first) {
+        this.first = first;
+    }
+
     public AbstractCell getSourceCell() {
         return sourceCell;
+    }
+
+    public Object getContext() {
+        return sourceCell.context;
+    }
+
+    public int getColspan() {
+        return sourceCell.cellStyle.getColspan();
+    }
+
+    public int getRowspan() {
+        return sourceCell.cellStyle.getRowspan();
+    }
+
+    public void setColspan(int colspan) {
+        sourceCell.cellStyle.setColspan(colspan);
     }
 }

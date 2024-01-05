@@ -12,6 +12,11 @@ public class Cells {
     private final int fieldSize;
     private Integer tableColSize;
     private Integer dataColSize;
+    private GlobalTableProperties properties;
+
+    public GlobalTableProperties getProperties() {
+        return properties;
+    }
 
     public Cells(List<AbstractCell> cellList, int fieldSize) {
         this.cellList = Collections.unmodifiableList(cellList);
