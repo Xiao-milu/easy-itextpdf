@@ -25,4 +25,12 @@ public class StyleFont {
      * 字体颜色
      */
     private int[] rgb;
+
+    public StyleFont(String fontName, float fontSize, boolean bold, boolean italic, int[] rgb) {
+        this.fontName = fontName;
+        this.fontSize = fontSize;
+        this.bold = bold;
+        this.italic = italic;
+        this.rgb = rgb;
+    }
 }

@@ -38,6 +38,11 @@ public @interface PdfContext {
     PdfStyleCell cellStyle() default @PdfStyleCell;
 
     /**
+     * 表头样式
+     */
+    PdfStyleCell headerCellStyle() default @PdfStyleCell;
+
+    /**
      * 内容文本样式
      */
     PdfStyleFont contextFontStyle() default @PdfStyleFont;

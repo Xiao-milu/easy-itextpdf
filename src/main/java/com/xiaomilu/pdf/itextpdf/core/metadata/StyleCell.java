@@ -22,4 +22,17 @@ public class StyleCell {
      * 内间距
      */
     private float padding;
+
+    /**
+     * 行高
+     */
+    float height;
+
+    public StyleCell(AlignEnums alignEnums, int colspan, int rowspan, float padding, float height) {
+        this.alignEnums = alignEnums;
+        this.colspan = colspan;
+        this.rowspan = rowspan;
+        this.padding = padding;
+        this.height = height;
+    }
 }

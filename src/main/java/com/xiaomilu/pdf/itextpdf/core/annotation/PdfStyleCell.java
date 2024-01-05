@@ -33,4 +33,9 @@ public @interface PdfStyleCell {
      * 内间距
      */
     float padding() default 1.0f;
+
+    /**
+     * 行高
+     */
+    float height() default 24.0f;
 }

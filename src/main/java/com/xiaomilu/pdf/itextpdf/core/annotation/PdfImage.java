@@ -35,4 +35,14 @@ public @interface PdfImage {
      * 单元格样式
      */
     PdfStyleCell cellStyle() default @PdfStyleCell;
+
+    /**
+     * header单元格样式
+     */
+    PdfStyleCell headerCellStyle() default @PdfStyleCell;
+
+    /**
+     * header文本样式
+     */
+    PdfStyleFont headerFontStyle() default @PdfStyleFont(fontSize = 14.0f, bold = true);
 }

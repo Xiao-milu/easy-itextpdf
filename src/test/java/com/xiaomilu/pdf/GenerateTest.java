@@ -8,7 +8,7 @@ public class GenerateTest {
     @Test
     public void generateTest() {
         PdfGenerateStep.startStep()
-                .setTitle("ddd")
-                .setSubTitle();
+                .defaultTitle()
+                .defaultSubTitle();
     }
 }

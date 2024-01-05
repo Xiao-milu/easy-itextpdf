@@ -22,4 +22,66 @@ public abstract class AbstractCell {
      * 单元格样式
      */
     protected StyleCell cellStyle;
+    /**
+     * 每条数据cell数量
+     */
+    protected int cellSize;
+
+    /**
+     * 数据内容
+     */
+    protected Object context;
+
+    /**
+     * 表头样式
+     */
+    protected StyleCell headerCellStyle;
+    /**
+     * 表头字体样式
+     */
+    private StyleFont headerFontStyle;
+
+    public AbstractCell(String header, int sort, boolean autoCut, int cellSize, StyleCell cellStyle,
+                        StyleCell headerCellStyle, StyleFont headerFontStyle, Object context) {
+        this.header = header;
+        this.sort = sort;
+        this.autoCut = autoCut;
+        this.cellSize = cellSize;
+        this.cellStyle = cellStyle;
+        this.context = context;
+        this.headerCellStyle = headerCellStyle;
+        this.headerFontStyle = headerFontStyle;
+    }
+
+    public StyleCell getHeaderCellStyle() {
+        return headerCellStyle;
+    }
+
+    public StyleFont getHeaderFontStyle() {
+        return headerFontStyle;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public boolean isAutoCut() {
+        return autoCut;
+    }
+
+    public StyleCell getCellStyle() {
+        return cellStyle;
+    }
+
+    public int getCellSize() {
+        return cellSize;
+    }
+
+    public Object getContext() {
+        return context;
+    }
 }

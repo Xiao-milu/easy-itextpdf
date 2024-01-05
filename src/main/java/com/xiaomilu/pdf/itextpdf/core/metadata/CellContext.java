@@ -6,5 +6,10 @@ package com.xiaomilu.pdf.itextpdf.core.metadata;
  */
 public class CellContext extends AbstractCell{
     private StyleFont contextFontStyle;
-    private StyleFont headerFontStyle;
+
+    public CellContext(String header, int sort, boolean autoCut, int cellSize, StyleCell cellStyle,
+                       StyleFont contextFontStyle, StyleCell headerCellStyle, StyleFont headerFontStyle, Object context) {
+        super(header, sort, autoCut, cellSize, cellStyle, headerCellStyle, headerFontStyle, context);
+        this.contextFontStyle = contextFontStyle;
+    }
 }
