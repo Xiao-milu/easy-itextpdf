@@ -51,7 +51,7 @@ public class CellData {
      * 获取实际header索引
      */
     public int getHeaderIndex() {
-        return globalProperties.showNumber ? originHeaderIndex + 1 : originHeaderIndex;
+        return globalProperties.numberAlready ? originHeaderIndex + 1 : originHeaderIndex;
     }
 
     /**
@@ -144,5 +144,17 @@ public class CellData {
                 ", fontProperties=" + fontProperties +
                 ", imageProperties=" + imageProperties +
                 '}';
+    }
+
+    public boolean isFirst() {
+        return first;
+    }
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public CellData getHeaderCell() {
+        return headerCellList.get(getHeaderIndex());
     }
 }

@@ -5,6 +5,7 @@ import com.xiaomilu.pdf.itextpdf.core.constant.AlignEnums;
 import com.xiaomilu.pdf.itextpdf.core.constant.FontConstant;
 import com.xiaomilu.pdf.itextpdf.core.image.ImageCache;
 import com.xiaomilu.pdf.itextpdf.core.metadata.*;
+import com.xiaomilu.pdf.itextpdf.core.render.DefaultCellDataRender;
 import com.xiaomilu.pdf.itextpdf.core.resolver.DataResolver;
 import org.junit.Test;
 
@@ -27,10 +28,10 @@ public class GenerateTest {
                 new FontProperties(FontConstant.SIM_SUN, 14.0f, new int[]{71, 71, 71}, true, true),
                 new ImageProperties(ImageCache.class, 1));
         DataResolver dataResolver = new DataResolver();
-        List<CellData> cellDataList = dataResolver.resolveHeader(Demo.class, globalProperties);
+        List<CellData> cellDataList = dataResolver.resolve(demoList, globalProperties);
+        DefaultCellDataRender render = new DefaultCellDataRender(dataResolver);
+        cellDataList = render.rendering(Demo.class, cellDataList);
         cellDataList.forEach(System.out::println);
-        List<CellData> resolve = dataResolver.resolve(demoList, globalProperties);
-        resolve.forEach(System.out::println);
     }
 
     public static class Demo {

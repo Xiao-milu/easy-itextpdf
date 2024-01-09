@@ -20,8 +20,20 @@ public class DataResolver {
      */
     private Map<Class, Resolver> resolverRegistry = new HashMap<>();
 
+    /**
+     * 记录class一行数据是否跨越多行
+     */
+    private Map<Class, Boolean> enjambmentCache = new HashMap<>();
+
     public <T> List<CellData> resolve(List<T> dataList, GlobalProperties globalProperties) {
         return resolve(null, dataList, globalProperties);
+    }
+
+    public <T> List<CellData> resolveHeader(Class<T> clazz) {
+        if (!resolverRegistry.containsKey(clazz)) {
+            throw new RuntimeException("global properties is not provide");
+        }
+        return resolverRegistry.get(clazz).resolveHeader(clazz);
     }
 
     public <T> List<CellData> resolveHeader(Class<T> clazz, GlobalProperties globalProperties) {
@@ -36,6 +48,29 @@ public class DataResolver {
             clazz = (Class<T>) dataList.get(0).getClass();
         }
         return resolverRegistry.computeIfAbsent(clazz, cl -> new Resolver(cl, globalProperties)).resolve(dataList);
+    }
+
+    /**
+     * 检查一条数据是否跨多行
+     */
+    public <T> boolean isEnjambment(Class<T> clazz) {
+        if (enjambmentCache.containsKey(clazz)) {
+            return enjambmentCache.get(clazz);
+        }
+        List<CellData> cellDataList = resolveHeader(clazz);
+        int first = 0;
+        boolean enjambment = false;
+        for (CellData cellData : cellDataList) {
+            if (cellData.isFirst()) {
+                first++;
+                if (first > 1) {
+                    enjambment = true;
+                    break;
+                }
+            }
+        }
+        enjambmentCache.put(clazz, enjambment);
+        return enjambment;
     }
 
     private class Resolver {

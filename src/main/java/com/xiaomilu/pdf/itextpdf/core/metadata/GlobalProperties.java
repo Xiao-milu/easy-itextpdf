@@ -5,6 +5,10 @@ package com.xiaomilu.pdf.itextpdf.core.metadata;
  * @author Xiao迷路
  */
 public class GlobalProperties {
+    /**
+     * 标记是否已渲染序号
+     */
+    protected boolean numberAlready = false;
     protected final boolean showNumber;
     protected final boolean showNumberHeader;
     protected final String headerName;
